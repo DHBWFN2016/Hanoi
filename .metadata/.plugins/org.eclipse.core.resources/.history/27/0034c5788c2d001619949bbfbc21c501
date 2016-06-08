@@ -1,0 +1,18 @@
+/**
+ * 
+ */
+package de.hanoi;
+
+/**
+ * @author phillip.goellner
+ *
+ */
+public class GamePad
+{
+	private Rod[] rods;
+	
+	public void move(int rod1, int rod2) throws IllegalMovementException
+	{
+		
+	}
+}

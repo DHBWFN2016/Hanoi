@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package de.hanoi;
+
+/**
+ * @author phillip.goellner
+ *
+ */
+public class IllegalMovementException extends Exception
+{
+	public IllegalMovementException()
+	{
+		
+	}
+}

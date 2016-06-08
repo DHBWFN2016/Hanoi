@@ -1,0 +1,38 @@
+/**
+ * 
+ */
+package de.hanoi;
+
+/**
+ * @author phillip.goellner
+ *
+ */
+public class Main {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws Exception
+	{
+		parseArgs(args);
+	}
+	
+	private static void parseArgs(String[] args)
+	{
+		if(args.length == 0)
+		{}
+		else
+		{
+			for(String arg : args)
+			{
+				if(arg.compareToIgnoreCase("-autoplay") == 0)
+				{}
+				else if(arg.compareToIgnoreCase("-delay") == 0)
+				{
+					
+				}
+			}
+		}
+	}
+
+}
