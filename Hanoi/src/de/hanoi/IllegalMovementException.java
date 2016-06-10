@@ -15,8 +15,8 @@ public class IllegalMovementException extends Exception
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public IllegalMovementException()
+	public IllegalMovementException(String message)
 	{
-		
+		super(message);
 	}
 }

@@ -9,39 +9,74 @@ package de.hanoi;
  */
 public class GamePad
 {
-	private Rod[] rods;
+	private Peg[] pegs;
 	public final int DISC_NUMBER;
 	public static final int DEFAULT_DISC_NUMBER = 4;
+	private int moves;
 	
 	public GamePad()
 	{
-		rods = new Rod[3];
+		pegs = new Peg[3];
 		DISC_NUMBER = DEFAULT_DISC_NUMBER;
 		initiate();
+		moves = 0;
 	}
 	public GamePad(int discNumber)
 	{
-		rods = new Rod[3];
+		pegs = new Peg[3];
 		DISC_NUMBER = discNumber;
 		initiate();
+		moves = 0;
 	}
 	
 	private void initiate()
 	{
-		for(int i = 0; i < rods.length; i++)
+		for(int i = 0; i < pegs.length; i++)
 		{
-			rods[i] = new Rod();
+			pegs[i] = new Peg();
 		}
 		for(int i = DISC_NUMBER; i > 0; i--)
 		{
-			rods[0].push(new Disc(i));
+			pegs[0].push(new Disk(i));
 		}
 	}
 	
-	public void move(int rod1, int rod2) throws IllegalMovementException
+	public void move(int peg1, int peg2) throws IllegalMovementException
 	{
-		Rod tmp = rods[rod1];
-		rods[rod1] = rods[rod2];
-		rods[rod2] = tmp;
+		System.out.println("Trying to move from " + pegs[peg1] + " to " + pegs[peg2]);
+		moves++;
+		if(pegs[peg1].isEmpty())
+		{
+			throw new IllegalMovementException("Trying to remove from an empty Peg");
+		}
+		if(!pegs[peg2].isEmpty() && pegs[peg2].peek().compareTo(pegs[peg1].peek()) < 0)
+		{
+			throw new IllegalMovementException("Trying to move size " + pegs[peg1].peek() + " onto size " + pegs[peg2].peek());
+		}
+		pegs[peg2].push(pegs[peg1].pop());
+		System.out.println("Moved from " + pegs[peg1] + " to " + pegs[peg2]);
+	}
+	
+	public void resetMoves()
+	{
+		moves = 0;
+	}
+	public int getMoves()
+	{
+		return moves;
+	}
+	
+	public int getPegSize(int index)
+	{
+		return pegs[index].size();
+	}
+	
+	public String toString()
+	{
+		String output = "{";
+		for(int i = 0; i < pegs.length-1; i++)
+			output +=  pegs[i]+",";
+		output += pegs[pegs.length-1]+"}";
+		return output;
 	}
 }

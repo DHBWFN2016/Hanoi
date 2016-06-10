@@ -18,11 +18,11 @@ public class Main {
 	}
 	
 	
-	private static GamePad parseArgs(String[] args)
+	private static GamePad parseArgs(String[] args) throws Exception
 	{
 		if(args.length == 0)
 		{
-			System.err.println("No Arguments were given where 1 was expected. Plese refer to the Help Page below.\n");
+			System.err.println("No Arguments were given where 1 was expected. Please refer to the Help Page below.\n");
 			printHelp();
 		}
 		else
