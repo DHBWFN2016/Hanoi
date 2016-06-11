@@ -10,21 +10,22 @@ package de.hanoi;
 public class GamePad
 {
 	private Peg[] pegs;
-	public final int DISC_NUMBER;
-	public static final int DEFAULT_DISC_NUMBER = 4;
+	public int diskNumber;
+	public static final int DEFAULT_DISK_NUMBER = 4;
 	private int moves;
+	private GameState currentGameState;
 	
 	public GamePad()
 	{
 		pegs = new Peg[3];
-		DISC_NUMBER = DEFAULT_DISC_NUMBER;
+		diskNumber = DEFAULT_DISK_NUMBER;
 		initiate();
 		moves = 0;
 	}
-	public GamePad(int discNumber)
+	public GamePad(int diskNumber)
 	{
 		pegs = new Peg[3];
-		DISC_NUMBER = discNumber;
+		this.diskNumber = diskNumber;
 		initiate();
 		moves = 0;
 	}
@@ -35,7 +36,7 @@ public class GamePad
 		{
 			pegs[i] = new Peg();
 		}
-		for(int i = DISC_NUMBER; i > 0; i--)
+		for(int i = diskNumber; i > 0; i--)
 		{
 			pegs[0].push(new Disk(i));
 		}
@@ -43,7 +44,7 @@ public class GamePad
 	
 	public void move(int peg1, int peg2) throws IllegalMovementException
 	{
-		System.out.println("Trying to move from " + pegs[peg1] + " to " + pegs[peg2]);
+		System.out.print(toString() + " -> ");
 		moves++;
 		if(pegs[peg1].isEmpty())
 		{
@@ -54,21 +55,38 @@ public class GamePad
 			throw new IllegalMovementException("Trying to move size " + pegs[peg1].peek() + " onto size " + pegs[peg2].peek());
 		}
 		pegs[peg2].push(pegs[peg1].pop());
-		System.out.println("Moved from " + pegs[peg1] + " to " + pegs[peg2]);
+		System.out.println(toString());
 	}
 	
 	public void resetMoves()
 	{
 		moves = 0;
+		initiate();
 	}
 	public int getMoves()
 	{
 		return moves;
 	}
 	
+	public void setDiskNumber(int i)
+	{
+		diskNumber = i;
+		initiate();
+	}
+	
 	public int getPegSize(int index)
 	{
 		return pegs[index].size();
+	}
+	
+	public void setGameState(GameState g)
+	{
+		currentGameState = g;
+	}
+	
+	public GameState getGameState()
+	{
+		return currentGameState;
 	}
 	
 	public String toString()

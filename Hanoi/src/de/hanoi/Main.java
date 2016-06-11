@@ -14,49 +14,69 @@ public class Main {
 	 */
 	public static void main(String[] args) throws Exception
 	{
-		parseArgs(args);
+		GamePad gamePad = parseArgs(args);
+		if(gamePad.getGameState() == GameState.AUTOPLAY)
+		{
+			new AutoSolver(gamePad, 1).solve();
+		}
 	}
 	
 	
 	private static GamePad parseArgs(String[] args) throws Exception
 	{
+		GamePad gamePad = new GamePad();
 		if(args.length == 0)
 		{
-			System.err.println("No Arguments were given where 1 was expected. Please refer to the Help Page below.\n");
+			System.err.println("No Arguments were given where one was expected. Please refer to the Help Page below.\n");
 			printHelp();
 		}
 		else
 		{
-			for(String arg : args)
+			for(int i =  0; i < args.length; i++)
 			{
-				if(arg.compareToIgnoreCase("-help") == 0)
+				if(args[i].compareToIgnoreCase("-help") == 0)
 				{
 					printHelp();
-					System.exit(0);
 				}
-				else if(arg.compareToIgnoreCase("-autoplay") == 0)
+				else if(args[i].compareToIgnoreCase("-autoplay") == 0)
 				{
-					
+					gamePad.setGameState(GameState.AUTOPLAY);
 				}
-				else if(arg.compareToIgnoreCase("-delay") == 0)
+				else if(args[i].compareToIgnoreCase("-delay") == 0)
 				{
-					
+					gamePad.setGameState(GameState.AUTOPLAY);
+					i++;
+					try
+					{
+						AutoSolver.presetDelay(Integer.parseInt(args[i]));
+					}
+					catch(ArrayIndexOutOfBoundsException a)
+					{
+						printError();
+					}
 				}
 				else
 				{
 					try
 					{
-						return new GamePad(Integer.parseInt(arg));
+						System.out.println("Disk number -> " + args[i]);
+						gamePad.setDiskNumber(Integer.parseInt(args[i]));
 					}
 					catch(NumberFormatException n)
 					{
-						System.err.println("An error occured while parsing.");
-						System.err.println("Type java Main -help for the Help Page.");
+						printError();
 					}
 				}
 			}
 		}
-		return new GamePad(4);
+		return gamePad;
+	}
+	
+	private static void printError()
+	{
+		System.err.println("An error occured while parsing.");
+		System.err.println("Type \"java Main -help\" for the Help Page.");
+		System.exit(1);
 	}
 	
 	private static void printHelp()
@@ -66,7 +86,8 @@ public class Main {
 		System.out.println("-autoplay: lets the computer solve the Towers of Hanoi Game");
 		System.out.println("-delay <number greater 0>: sets the autoplay delay in seconds (can only be used with autoplay)");
 		System.out.println("-help: prints this Help Page and exits");
-		System.out.println("<number greater 0>: sets the number of discs for the game");
+		System.out.println("<number greater 0>: sets the number of disks for the game");
+		System.exit(0);
 	}
 
 }
