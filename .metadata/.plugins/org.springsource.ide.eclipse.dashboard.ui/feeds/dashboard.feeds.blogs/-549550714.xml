@@ -5,7 +5,36 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2016-06-07T23:35:36Z</updated>
+  <updated>2016-06-10T09:41:23Z</updated>
+  <entry>
+    <title>Spring Framework 4.3 goes GA</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/10/spring-framework-4-3-goes-ga" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Juergen Hoeller</name>
+    </author>
+    <id>tag:spring.io,2016-06-09:2523</id>
+    <updated>2016-06-10T09:41:23Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m pleased to announce that Spring Framework 4.3 GA (a.k.a. 4.3.0.RELEASE) is now available from &lt;a href="https://repo.spring.io"&gt;repo.spring.io&lt;/a&gt; as well as Maven Central!&lt;/p&gt;
+&lt;p&gt;In addition to the feature themes mentioned in my &lt;a href="https://spring.io/blog/2016/04/06/spring-framework-4-3-goes-rc1"&gt;4.3 RC1 announcement&lt;/a&gt;, the GA release covers compatibility with several recent third-party releases, in particular: Hibernate ORM 5.2, Jackson 2.8, Netty 4.1, Undertow 1.4, and Tomcat 8.5.2 / 9.0 M6. Also, please note that our Hibernate 3.x support is finally deprecated (even &lt;a href="http://in.relation.to/2015/10/27/great-jira-cleanup-2015/"&gt;Hibernate 4.x is not actively supported by Red Hat anymore&lt;/a&gt;) and that Spring 4.3&amp;rsquo;s Jackson support requires Jackson 2.6+ now.&lt;/p&gt;
+&lt;p&gt;Spring Framework 4.3 is designed as a straightforward upgrade for all 4.x users. We will keep supporting the 4.2.x line until the end of this year; however, we recommend an upgrade to 4.3 at your earliest convenience. As previously hinted at, &lt;em&gt;the 4.3.x line will enjoy an extended support life until 2019&lt;/em&gt;, within the general Spring Framework 4 system requirements (JDK 6+, Servlet 2.5+) but with a focus on recent servers such as Tomcat 8 and WebSphere 8.&lt;/p&gt;
+&lt;p&gt;Next up: Spring Framework 5.0, with a first milestone to arrive towards the end of July, just in time for our &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform&lt;/a&gt; conference in Las Vegas!&lt;/p&gt;
+&lt;p&gt;Cheers,&lt;br/&gt;Juergen&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Cloud Stream 1.0.2.RELEASE is available</title>
+    <link rel="alternate" href="https://spring.io/blog/2016/06/08/spring-cloud-stream-1-0-2-release-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Marius Bogoevici</name>
+    </author>
+    <id>tag:spring.io,2016-06-08:2522</id>
+    <updated>2016-06-08T22:10:42Z</updated>
+    <content type="html">&lt;p&gt;Shortly after the &lt;a href="https://spring.io/blog/2016/06/03/spring-cloud-stream-1-0-1-release-is-available"&gt;1.0.1.RELEASE announcement&lt;/a&gt; last week we’ve identified a critical and very specific &lt;a href="https://github.com/spring-cloud/spring-cloud-stream/issues/564"&gt;issue&lt;/a&gt; concerning multi-binder configurations in cloud environments. As a result, we have decided to follow up with a 1.0.2.RELEASE to handle that and ensure that the fix is available in the upcoming Brixton.SR1 release. The artifacts can be found in &lt;a href="https://repo.spring.io"&gt;Spring Repository&lt;/a&gt; as well as &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cspring-cloud-stream"&gt;Maven Central&lt;/a&gt;.&lt;/p&gt;
+&lt;hr/&gt;
+&lt;p&gt;I will be talking about Spring Cloud Stream at &lt;a href="http://springoneplatform.io"&gt;Spring One Platform&lt;/a&gt;, which will be taking place in Las Vegas between August 1-4 this year. There are many other great talks so &lt;a href="https://2016.event.springoneplatform.io/schedule/sessions"&gt;check the agenda&lt;/a&gt; and &lt;a href="https://2016.event.springoneplatform.io/register"&gt;get your ticket&lt;/a&gt; if you haven’t done so already. &lt;/p&gt;</content>
+  </entry>
   <entry>
     <title>This Week in Spring - June 7th, 2016</title>
     <link rel="alternate" href="https://spring.io/blog/2016/06/07/this-week-in-spring-june-7th-2016" />
@@ -1858,45 +1887,5 @@ so that you can review the state of the database (the default jdbc url is
 &lt;p&gt;For a complete list of changes, and upgrade instructions, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.4-Release-Notes"&gt;Spring Boot 1.4 Release Notes&lt;/a&gt; on the WIKI and the updated &lt;a href="http://docs.spring.io/spring-boot/docs/1.4.0.M3/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As always, thanks to all our contributors and please continue to provide feedback and &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;bug reports&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Hopefully we&amp;rsquo;ll see a few of you at the &lt;a href="http://springio.net/"&gt;Spring I/O conference&lt;/a&gt; in Barcelona this week, or at &lt;a href="https://springoneplatform.io/"&gt;SpringOne Platform in August&lt;/a&gt;!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring LDAP 2.1.0 Released</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/05/17/spring-ldap-2-1-0-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Rob Winch</name>
-    </author>
-    <id>tag:spring.io,2016-05-17:2502</id>
-    <updated>2016-05-17T14:03:54Z</updated>
-    <content type="html">&lt;p&gt;On behalf of the community, I&amp;rsquo;m pleased to announce the release of Spring LDAP 2.1.0.RELEASE. The highlights of this release include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/380"&gt;#380&lt;/a&gt; - Support for Spring Data Hopper&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/384"&gt;#384&lt;/a&gt; - Early support for Spring IO Platform 2.1&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/351"&gt;#351&lt;/a&gt; - Support for commons-pool2&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/issues/370"&gt;#370&lt;/a&gt; - Support property placeholders in XML Namespace&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-ldap/pull/392"&gt;#392&lt;/a&gt; - Document Testing Support&lt;/li&gt;
-  &lt;li&gt;Migrated from JIRA to &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;GitHub Issues&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Added &lt;a href="https://gitter.im/spring-projects/spring-ldap"&gt;Gitter Chat&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;For complete details of 2.1 refer to the changelog for &lt;a href="https://github.com/spring-projects/spring-ldap/issues?q=milestone%3A2.1.0.RC1"&gt;2.1.0.RC1&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-ldap/issues?utf8=%E2%9C%93&amp;q=milestone%3A2.1.0"&gt;2.1.0.RELEASE&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#feedback-please" class="anchor" name="feedback-please"&gt;&lt;/a&gt;Feedback Please&lt;/h1&gt;
-&lt;p&gt;If you have feedback on this release, I encourage you to reach out via &lt;a href="http://stackoverflow.com/questions/tagged/spring-ldap"&gt;StackOverflow&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;GitHub Issues&lt;/a&gt;, or via the comments section. You can also ping me &lt;a href="https://twitter.com/rob_winch"&gt;@rob_winch&lt;/a&gt; or Joe (our latest full time Spring Security team member) &lt;a href="https://twitter.com/joe_grandja"&gt;@joe_grandja&lt;/a&gt; on Twitter.&lt;/p&gt;
-&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ldap/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-ldap/docs/2.1.0.RELEASE/reference/"&gt;Reference&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-ldap/issues"&gt;Issues&lt;/a&gt;&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring IO Platform 2.0.5.RELEASE</title>
-    <link rel="alternate" href="https://spring.io/blog/2016/05/13/spring-io-platform-2-0-5-release" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Andy Wilkinson</name>
-    </author>
-    <id>tag:spring.io,2016-05-13:2501</id>
-    <updated>2016-05-13T13:51:00Z</updated>
-    <content type="html">&lt;p&gt;Following on from Spring Boot 1.3.5.RELEASE &lt;a href="https://spring.io/blog/2016/05/10/spring-boot-1-3-5-released"&gt;which fixed a regression&lt;/a&gt;, &lt;a href="http://platform.spring.io/platform"&gt;Spring IO Platform&lt;/a&gt; 2.0.5.RELEASE is now available from both &lt;a href="http://repo.spring.io/release"&gt;repo.spring.io&lt;/a&gt; and &lt;a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3Aio.spring.platform"&gt;Maven Central&lt;/a&gt;. &lt;/p&gt;
-&lt;p&gt;This maintenance release upgrades the versions of a number of the projects in the Platform to pick up their latest maintenance releases:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring AMQP 1.5.6.RELEASE&lt;/li&gt;
-  &lt;li&gt;Spring Boot 1.3.5.RELEASE&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href="http://platform.spring.io/platform"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-io/platform/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/platform/docs/2.0.5.RELEASE/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
 </feed>

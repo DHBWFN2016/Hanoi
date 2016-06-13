@@ -1,15 +1,15 @@
-/**
- * 
- */
 package de.hanoi;
 
 /**
  * @author phillip.goellner
- *
+ * This class is a standard main class featuring an additional parseArgs method along with a method for each an error message and the Help Page.
+ * Its only job is to start the program.
  */
 public class Main {
 
 	/**
+	 * This is the starting point of the program. The Strings in args are parsed in the parseArgs method. The returned {@link GamePad} object is used as a
+	 * foundation for the GUI.
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception
@@ -21,7 +21,13 @@ public class Main {
 		}
 	}
 	
-	
+	/**
+	 * The args String from the main method is passed to parsArgs in order to parse the user given arguments.
+	 * The arguments are detected ignoring any order and number, which means that the same argument can be passed several times. The last given argument
+	 * overrides its other kinds.
+	 * @param args the command line arguments given at the start of this program
+	 * @return the GamePad that represents the Game itself with the specified disk number
+	 */
 	private static GamePad parseArgs(String[] args) throws Exception
 	{
 		GamePad gamePad = new GamePad();
@@ -72,6 +78,10 @@ public class Main {
 		return gamePad;
 	}
 	
+	/**
+	 * Prints a standard error message to the System.err Stream, only when the program didn't manage to start.
+	 * After the message with a reference to the Help Page the program exits with an error code (1)
+	 */
 	private static void printError()
 	{
 		System.err.println("An error occured while parsing.");
@@ -79,12 +89,16 @@ public class Main {
 		System.exit(1);
 	}
 	
+	/**
+	 * Prints the Help Page to the System.out Stream.
+	 * After the page is printed the program exits with a normal exit code (0).
+	 * */
 	private static void printHelp()
 	{
 		System.out.println("This is the Help Page for the Towers of Hanoi Application created by Severino Detta and Phillip Goellner");
 		System.out.println("One or more of the following commands has to be given in order to start the application:\n");
 		System.out.println("-autoplay: lets the computer solve the Towers of Hanoi Game");
-		System.out.println("-delay <number greater 0>: sets the autoplay delay in seconds (can only be used with autoplay)");
+		System.out.println("-delay <number greater 0>: sets the autoplay delay in seconds (automatically includes -autoplay)");
 		System.out.println("-help: prints this Help Page and exits");
 		System.out.println("<number greater 0>: sets the number of disks for the game");
 		System.exit(0);

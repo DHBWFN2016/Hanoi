@@ -1,13 +1,13 @@
-/**
- * 
- */
 package de.hanoi;
 
 import java.util.Stack;
 
 /**
  * @author phillip.goellner
- *
+ * Peg is a wrapper class for a stack. The reason for doing this instead of extending java.util.Stack is the greater flexibility of a wrapper class,
+ * also taking possible future expansion into consideration.
+ * <p>
+ * Every method is simply a wrapper around the corresponding java.util.Stack method
  */
 public class Peg
 {
@@ -18,17 +18,32 @@ public class Peg
 		stack = new Stack<Disk>();
 	}
 	
+	/**
+	 * Removes the first Disk from the Peg and returns it.
+	 * @return the Disk removed by this method
+	 * @throws EmptyStackException - if the Peg is empty
+	 */
 	public Disk pop()
 	{
 		return stack.pop();
 	}
+	
+	/**
+	 * Looks at the first Disk and returns it without removing it.
+	 * @return the first Disk on this Peg
+	 * @throws EmptyStackException - if the Peg is empty
+	 */
 	public Disk peek()
 	{
 		return stack.peek();
 	}
-	public void push(Disk d)
+	
+	/**
+	 * Inserts the given Disk on top of this Peg.
+	 * @param disk the Disk to be pushed onto the Peg*/
+	public void push(Disk disk)
 	{
-		stack.push(d);
+		stack.push(disk);
 	}
 	public boolean isEmpty()
 	{
@@ -38,7 +53,6 @@ public class Peg
 	{
 		return stack.size();
 	}
-	
 	public String toString()
 	{
 		return stack.toString();
