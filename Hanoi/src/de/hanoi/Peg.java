@@ -40,19 +40,32 @@ public class Peg
 	
 	/**
 	 * Inserts the given Disk on top of this Peg.
-	 * @param disk the Disk to be pushed onto the Peg*/
+	 * @param disk the Disk to be pushed onto the Peg
+	 */
 	public void push(Disk disk)
 	{
 		stack.push(disk);
 	}
+	
+	/**
+	 * Checks whether the Peg is empty.
+	 */
 	public boolean isEmpty()
 	{
 		return stack.isEmpty();
 	}
+	
+	/**
+	 * Returns the number of Disks on this Peg.
+	 * @return the total number of Disks on this Peg*/
 	public int size()
 	{
 		return stack.size();
 	}
+	
+	/**
+	 * Returns a String representing this Disk object
+	 */
 	public String toString()
 	{
 		return stack.toString();

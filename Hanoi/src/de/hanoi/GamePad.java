@@ -2,7 +2,8 @@ package de.hanoi;
 
 /**
  * @author phillip.goellner
- *
+ * GamePad represents the game itself and contains an array of (three) Pegs, the current amount of moves and the current GameState.
+ * The methods provided by this class are used by the GUI as well as the {@link AutoSolver} class.
  */
 public class GamePad
 {
@@ -12,21 +13,29 @@ public class GamePad
 	private int moves;
 	private GameState currentGameState;
 	
+	/**
+	 * Initializes a GamePad with a default number of 4 Disks.
+	 */
 	public GamePad()
 	{
 		pegs = new Peg[3];
 		diskNumber = DEFAULT_DISK_NUMBER;
 		initiate();
-		moves = 0;
 	}
+	/**
+	 * Initializes a GamePad with the given number of Disks.
+	 * @param diskNumber the number of Disks the GamePad should be initialized with
+	 */
 	public GamePad(int diskNumber)
 	{
 		pegs = new Peg[3];
 		this.diskNumber = diskNumber;
 		initiate();
-		moves = 0;
 	}
 	
+	/**
+	 * This method sets up a new board by creating three new Pegs, positioning all Disks on the first Peg and the moves to 0.
+	 */
 	private void initiate()
 	{
 		for(int i = 0; i < pegs.length; i++)
@@ -37,6 +46,7 @@ public class GamePad
 		{
 			pegs[0].push(new Disk(i));
 		}
+		moves = 0;
 	}
 	
 	public void move(int peg1, int peg2) throws IllegalMovementException
@@ -57,7 +67,6 @@ public class GamePad
 	
 	public void resetMoves()
 	{
-		moves = 0;
 		initiate();
 	}
 	public int getMoves()
