@@ -1,9 +1,9 @@
 package de.hanoi;
 
 /**
- * @author phillip.goellner
  * This Exception is thrown whenever someone tries to perform an illegal movement.
  * Trying to remove from an empty Peg and trying to place a Disk on a smaller one are both considered illegal.
+ * @author phillip.goellner
  */
 public class IllegalMovementException extends Exception
 {
