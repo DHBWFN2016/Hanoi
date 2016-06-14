@@ -12,6 +12,8 @@ public class Startklasse {
 	public static final Dimension DIMENSION_SCREEN = Toolkit.getDefaultToolkit().getScreenSize();
 	public static final int GUI_HEIGHT = DIMENSION_SCREEN.height/2;
 	public static final int GUI_WIDTH = DIMENSION_SCREEN.width/2;
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -27,7 +29,7 @@ public class Startklasse {
 		gui.setLocationRelativeTo(null);
 		
 		groundPanel.add(face, BorderLayout.CENTER);
-		groundPanel.add(actionfield, BorderLayout.SOUTH);
+		groundPanel.add(actionfield, BorderLayout.PAGE_END);
 		
 		actionfield.init();
 		

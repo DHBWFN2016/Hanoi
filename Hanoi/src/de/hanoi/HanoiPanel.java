@@ -3,6 +3,7 @@ package de.hanoi;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -13,22 +14,44 @@ public class HanoiPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private GamePad gamepad = new GamePad();
+	private Peg stack = new Peg();
+	private Random random = new Random();
+	
 	public void paint(Graphics d)
 	{
-		int STACK_WIDTH = 10;
-		int STACK_HEIGHT = getHeight()/5*4;
-		int WIDTH = getWidth();
-		int HEIGHT = getHeight();
+		int stack_width = 10;
+		int stack_height = getHeight()/5*4;
+		int width = getWidth();
+		int height = getHeight();
 		Graphics2D g = (Graphics2D)d;
 		
+		for (int i = 0; i < 3; i++) {
+			stack.push(new Disk(1+1));
+		}
+		
 		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, getWidth(), getHeight());
+		g.fillRect(0, 0, width, height);
 		
 		g.setColor(Color.DARK_GRAY);
-		g.fillRect(0, HEIGHT/5*4, WIDTH, 10);
-		g.fillRect(WIDTH/4, 10, STACK_WIDTH, STACK_HEIGHT);
-		g.fillRect(WIDTH/2, 10, STACK_WIDTH, STACK_HEIGHT);
-		g.fillRect((WIDTH/4)*3, 10, STACK_WIDTH, STACK_HEIGHT);
+		//Underground
+		g.fillRect(0, height/5*4, width, 10);
+		//Column
+		g.fillRect(width/4, 10, stack_width, stack_height);
+		g.fillRect(width/2, 10, stack_width, stack_height);
+		g.fillRect((width/4)*3, 10, stack_width, stack_height);
+		
+		if(!stack.isEmpty())
+		{
+			for (int i = 0; i < stack.size(); i++) 
+				{
+					int r = random.nextInt(255);
+					int gr = random.nextInt(255);
+					int b = random.nextInt(255);
+					g.setColor(new Color(r, gr, b));
+					g.fillRect(width/8+5*i, height/5*4-height/20-height/20*i, stack_width+width/4-10*i, height/20);
+				}
+		}
 	}
 
 	
