@@ -17,7 +17,7 @@ public class Main {
 		GamePad gamePad = parseArgs(args);
 		if(gamePad.getGameState() == GameState.AUTOPLAY)
 		{
-			new AutoSolver(gamePad, 1).solve();
+			new AutoSolver(gamePad).solve();
 		}
 	}
 	

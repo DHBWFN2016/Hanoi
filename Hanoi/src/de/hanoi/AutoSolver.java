@@ -13,7 +13,7 @@ public class AutoSolver implements Runnable
 	public AutoSolver(GamePad gamePad)
 	{
 		this.gamePad = gamePad;
-		delay = (preDelay == 0) ? 1 : preDelay;
+		delay = (preDelay == 0) ? 0 : preDelay;
 	}
 	
 	public AutoSolver(GamePad gamePad, int delay)
