@@ -14,11 +14,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws Exception
 	{
-		GamePad gamePad = parseArgs(args);
-		if(gamePad.getGameState() == GameState.AUTOPLAY)
-		{
-			new AutoSolver(gamePad).solve();
-		}
+		GameManager gameManager = parseArgs(args);
 	}
 	
 	/**
@@ -26,11 +22,14 @@ public class Main {
 	 * The arguments are detected ignoring any order and number, which means that the same argument can be passed several times. The last given argument
 	 * overrides its other kinds.
 	 * @param args the command line arguments given at the start of this program
-	 * @return the GamePad that represents the Game itself with the specified disk number
+	 * @return the GameManager that represents the interface between the game and the output
 	 */
-	private static GamePad parseArgs(String[] args) throws Exception
+	private static GameManager parseArgs(String[] args) throws Exception
 	{
-		GamePad gamePad = new GamePad();
+		boolean autoSolve = false;
+		int delay = 1;
+		int diskNo = 4;
+		
 		if(args.length == 0)
 		{
 			System.err.println("No Arguments were given where one was expected. Please refer to the Help Page below.\n");
@@ -46,15 +45,15 @@ public class Main {
 				}
 				else if(args[i].compareToIgnoreCase("-autoplay") == 0)
 				{
-					gamePad.setGameState(GameState.AUTOPLAY);
+					autoSolve = true;
 				}
 				else if(args[i].compareToIgnoreCase("-delay") == 0)
 				{
-					gamePad.setGameState(GameState.AUTOPLAY);
+					autoSolve= true;
 					i++;
 					try
 					{
-						AutoSolver.presetDelay(Integer.parseInt(args[i]));
+						delay = Integer.parseInt(args[i]);
 					}
 					catch(ArrayIndexOutOfBoundsException a)
 					{
@@ -65,8 +64,7 @@ public class Main {
 				{
 					try
 					{
-						System.out.println("Disk number -> " + args[i]);
-						gamePad.setDiskNumber(Integer.parseInt(args[i]));
+						diskNo = Integer.parseInt(args[i]);
 					}
 					catch(NumberFormatException n)
 					{
@@ -75,7 +73,7 @@ public class Main {
 				}
 			}
 		}
-		return gamePad;
+		return new GameManager(autoSolve, delay, diskNo);
 	}
 	
 	/**

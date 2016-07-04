@@ -2,63 +2,49 @@ package de.hanoi;
 
 /**
  * This class provides an auto solving algorithm for the game. It does that in the fewest steps possible.
- * To do the solving in a pace the user can follow, there is a delay, which can be set to a value greater than 1.
- * 1 second is also the default delay.
+ * Every step is saved to the queue in QueueManager within a MovementToken.
  * @author phillip.goellner
  */
 public class AutoSolver implements Runnable
 {
-	private GamePad gamePad;
-	private static int preDelay;
-	private int delay;
+	private QueueManager queueMgr;
+	private int diskNumber;
+	private boolean abort;
 	
-	public AutoSolver(GamePad gamePad)
+	public AutoSolver(QueueManager queueMgr, int diskNo)
 	{
-		this.gamePad = gamePad;
-		delay = (preDelay == 0) ? 0 : preDelay;
-	}
-	
-	public AutoSolver(GamePad gamePad, int delay)
-	{
-		this.gamePad = gamePad;
-		this.delay = delay;
+		this.queueMgr = queueMgr;
+		diskNumber = diskNo;
 	}
 	
 	public void solve() throws IllegalMovementException
 	{
-		solve(0,1,2,gamePad.getPegSize(0));
+		solve(0,1,2,diskNumber);
 	}
 	
 	private void solve(int start, int help, int target, int size) throws IllegalMovementException
 	{
+		if(abort)
+		{
+			abort = false;
+			return;
+		}
+		
 		if(size == 1)
 		{
-			gamePad.move(start, target);
-			try
-			{
-				Thread.sleep(delay*1000L);
-			}
-			catch (InterruptedException e)
-			{
-				// if this happens we have bigger problems than a dormant Thread...
-				e.printStackTrace();
-			}
+			queueMgr.addMovement(new MovementToken(start, target));
 		}
 		else
 		{
 			solve(start, target, help, size-1);
-			gamePad.move(start, target);
-			try
-			{
-				Thread.sleep(delay*1000L);
-			}
-			catch (InterruptedException e)
-			{
-				// if this happens we have bigger problems than a dormant Thread...
-				e.printStackTrace();
-			}
+			queueMgr.addMovement(new MovementToken(start, target));
 			solve(help, start, target, size-1);
 		}
+	}
+	
+	public void abort()
+	{
+		abort = true;
 	}
 
 	public void run()
@@ -73,10 +59,5 @@ public class AutoSolver implements Runnable
 			// of course this will never happen
 			e.printStackTrace();
 		}
-	}
-	
-	public static void presetDelay(int i)
-	{
-		preDelay = i;
 	}
 }

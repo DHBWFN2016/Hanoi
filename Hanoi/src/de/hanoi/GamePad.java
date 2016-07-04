@@ -9,19 +9,8 @@ public class GamePad
 {
 	private Peg[] pegs;
 	public int diskNumber;
-	public static final int DEFAULT_DISK_NUMBER = 4;
 	private int moves;
-	private GameState currentGameState;
 	
-	/**
-	 * Initializes a GamePad with a default number of 4 Disks.
-	 */
-	public GamePad()
-	{
-		pegs = new Peg[3];
-		diskNumber = DEFAULT_DISK_NUMBER;
-		initiate();
-	}
 	/**
 	 * Initializes a GamePad with the given number of Disks.
 	 * @param diskNumber the number of Disks the GamePad should be initialized with
@@ -107,23 +96,6 @@ public class GamePad
 	public int getPegSize(int index)
 	{
 		return pegs[index].size();
-	}
-
-	/**
-	 * Changes the {@link GameState} to a new one.
-	 * This is happens whenever the game finishes or starts.
-	 */
-	public void setGameState(GameState g)
-	{
-		currentGameState = g;
-	}
-
-	/**
-	 * Returns the {@link GameState} this GamePad is currently in
-	 */
-	public GameState getGameState()
-	{
-		return currentGameState;
 	}
 
 	/**

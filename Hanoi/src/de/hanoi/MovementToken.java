@@ -1,6 +1,3 @@
-/**
- * 
- */
 package de.hanoi;
 
 /**
@@ -13,16 +10,14 @@ public class MovementToken
 {
 	private int startingPeg;
 	private int targetPeg;
-	private GamePad gamePad;
 	
-	public MovementToken(int s, int t, GamePad g)
+	public MovementToken(int s, int t)
 	{
 		startingPeg = s;
 		targetPeg = t;
-		gamePad = g;
 	}
 	
-	public void resolve()
+	public void resolve(GamePad gamePad)
 	{
 		try
 		{

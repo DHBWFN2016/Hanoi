@@ -1,6 +1,3 @@
-/**
- * 
- */
 package de.hanoi;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -15,10 +12,32 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class QueueManager
 {
 	private ConcurrentLinkedQueue<MovementToken> queue;
+	private AutoSolver autoSolver;
+	private GamePad gamePad;
 
-	public QueueManager()
+	public QueueManager(GamePad g)
 	{
 		queue = new ConcurrentLinkedQueue<MovementToken>();
+		gamePad = g;
+	}
+	
+	public void startSolving()
+	{
+		new Thread(autoSolver).run();
+	}
+	public void cancelSolving()
+	{
+		autoSolver.abort();
+		queue.removeAll(queue);
 		
+	}
+	
+	public void addMovement(MovementToken m)
+	{
+		queue.add(m);
+	}
+	public void resolveMovement()
+	{
+		queue.poll().resolve(gamePad);
 	}
 }
