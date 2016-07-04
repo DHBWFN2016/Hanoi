@@ -3,14 +3,17 @@ package de.hanoi;
 import java.util.Stack;
 
 /**
- * @author phillip.goellner
  * Peg is a wrapper class for a stack. The reason for doing this instead of extending java.util.Stack is the greater flexibility of a wrapper class,
  * also taking possible future expansion into consideration.
  * <p>
  * Every method is simply a wrapper around the corresponding java.util.Stack method
+ * @author phillip.goellner
  */
 public class Peg
 {
+	/**
+	 *  
+	 */
 	private Stack<Disk> stack;
 
 	public Peg()
@@ -49,6 +52,7 @@ public class Peg
 	
 	/**
 	 * Checks whether the Peg is empty.
+	 * @return a boolean: true when the peg is empty, false otherwise
 	 */
 	public boolean isEmpty()
 	{
@@ -64,7 +68,8 @@ public class Peg
 	}
 	
 	/**
-	 * Returns a String representing this Disk object
+	 * Returns a String representing this Peg object
+	 * @return a String representation of this peg
 	 */
 	public String toString()
 	{

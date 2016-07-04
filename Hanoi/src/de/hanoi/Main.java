@@ -1,23 +1,23 @@
 package de.hanoi;
 
 /**
- * @author phillip.goellner
  * This class is a standard main class featuring an additional parseArgs method along with a method for each an error message and the Help Page.
  * Its only job is to start the program.
+ * @author phillip.goellner
  */
 public class Main {
 
 	/**
 	 * This is the starting point of the program. The Strings in args are parsed in the parseArgs method. The returned {@link GamePad} object is used as a
 	 * foundation for the GUI.
-	 * @param args
+	 * @param args the command line arguments passed as this program is started 
 	 */
 	public static void main(String[] args) throws Exception
 	{
 		GamePad gamePad = parseArgs(args);
 		if(gamePad.getGameState() == GameState.AUTOPLAY)
 		{
-			new AutoSolver(gamePad, 1).solve();
+			new AutoSolver(gamePad).solve();
 		}
 	}
 	

@@ -7,6 +7,6 @@
 <listEntry value="1"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="de.hanoi.Main"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-autoplay -delay 1 4"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-autoplay 21"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Hanoi"/>
 </launchConfiguration>
