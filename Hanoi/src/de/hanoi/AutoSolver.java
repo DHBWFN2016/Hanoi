@@ -1,8 +1,10 @@
 package de.hanoi;
 
 /**
+ * This class provides an auto solving algorithm for the game. It does that in the fewest steps possible.
+ * To do the solving in a pace the user can follow, there is a delay, which can be set to a value greater than 1.
+ * 1 second is also the default delay.
  * @author phillip.goellner
- *
  */
 public class AutoSolver implements Runnable
 {

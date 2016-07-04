@@ -39,9 +39,7 @@ public class PlayPanel extends JPanel implements ActionListener {
 		add(resetb);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
