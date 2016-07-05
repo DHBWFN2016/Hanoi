@@ -24,7 +24,7 @@ public class HanoiPanel extends JPanel {
 		int stack_height = getHeight()/5*4;
 		int width = getWidth();
 		int height = getHeight();
-		Graphics2D g = (Graphics2D)d;
+		Graphics2D g = (Graphics2D) d;
 		
 		for (int i = 0; i < 3; i++) {
 			stack.push(new Disk(1+1));
@@ -34,13 +34,13 @@ public class HanoiPanel extends JPanel {
 		g.fillRect(0, 0, width, height);
 		
 		g.setColor(Color.DARK_GRAY);
-		//Underground
+		//Background
 		g.fillRect(0, height/5*4, width, 10);
 		//Column
 		g.fillRect(width/4, 10, stack_width, stack_height);
 		g.fillRect(width/2, 10, stack_width, stack_height);
 		g.fillRect((width/4)*3, 10, stack_width, stack_height);
-		
+		/*
 		if(!stack.isEmpty())
 		{
 			for (int i = 0; i < stack.size(); i++) 
@@ -51,7 +51,8 @@ public class HanoiPanel extends JPanel {
 					g.setColor(new Color(r, gr, b));
 					g.fillRect(width/8+5*i, height/5*4-height/20-height/20*i, stack_width+width/4-10*i, height/20);
 				}
-		}
+		}*/
+		//for(Peg peg :)
 	}
 
 	

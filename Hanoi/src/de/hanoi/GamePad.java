@@ -57,7 +57,6 @@ public class GamePad
 	  */
 	public void move(int peg1, int peg2) throws IllegalMovementException
 	{
-		System.out.print(toString() + " -> ");
 		moves++;
 		if(pegs[peg1].isEmpty())
 		{
@@ -68,7 +67,6 @@ public class GamePad
 			throw new IllegalMovementException("Trying to move size " + pegs[peg1].peek() + " onto size " + pegs[peg2].peek());
 		}
 		pegs[peg2].push(pegs[peg1].pop());
-		System.out.println(toString());
 	}
 
 	/**

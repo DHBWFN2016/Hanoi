@@ -15,8 +15,6 @@ public class Startklasse {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		JFrame gui = new JFrame("Hanoi");
 		HanoiPanel face = new HanoiPanel();
 		PlayPanel actionfield = new PlayPanel();
