@@ -20,6 +20,11 @@ public class Peg
 	{
 		stack = new Stack<Disk>();
 	}
+	private Peg(Stack<Disk> s)
+	{
+		stack = new Stack<Disk>();
+		stack.addAll(s);
+	}
 	
 	/**
 	 * Removes the first Disk from the Peg and returns it.
@@ -65,6 +70,16 @@ public class Peg
 	public int size()
 	{
 		return stack.size();
+	}
+	
+	public Disk getDiskAt(int i)
+	{
+		return stack.elementAt(i);
+	}
+	
+	public Peg getCopy()
+	{
+		return new Peg(stack);
 	}
 	
 	/**

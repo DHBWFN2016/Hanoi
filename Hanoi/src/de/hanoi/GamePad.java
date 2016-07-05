@@ -123,6 +123,11 @@ public class GamePad
 	{
 		return currentGameState;
 	}
+	
+	public Peg getPegAt(int index)
+	{
+		return pegs[index].getCopy();
+	}
 
 	/**
 	 * Returns a String representing this GamePad object

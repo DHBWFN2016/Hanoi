@@ -16,7 +16,7 @@ public class Startklasse {
 	
 	public static void main(String[] args) {
 		JFrame gui = new JFrame("Hanoi");
-		HanoiPanel face = new HanoiPanel();
+		HanoiPanel face = new HanoiPanel(new GamePad());
 		PlayPanel actionfield = new PlayPanel();
 		JPanel groundPanel = new JPanel();
 		

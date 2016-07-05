@@ -18,6 +18,11 @@ public class HanoiPanel extends JPanel {
 	private Peg stack = new Peg();
 	private Random random = new Random();
 	
+	public HanoiPanel(GamePad g)
+	{
+		gamepad = g;
+	}
+	
 	public void paint(Graphics d)
 	{
 		int stack_width = 10;
@@ -52,7 +57,16 @@ public class HanoiPanel extends JPanel {
 					g.fillRect(width/8+5*i, height/5*4-height/20-height/20*i, stack_width+width/4-10*i, height/20);
 				}
 		}*/
-		//for(Peg peg :)
+		for(int i = 0; i < 3; i++)
+		{
+			//System.out.println("#"+i);
+			Peg p = gamepad.getPegAt(i);
+			for(int a = 0; a < p.size(); a++)
+			{
+				int no = p.getDiskAt(a).SIZE;
+				g.fillRect((width/4)*(i+1),10+no*10,no*10,15);
+			}
+		}
 	}
 
 	
