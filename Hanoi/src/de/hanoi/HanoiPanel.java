@@ -1,6 +1,7 @@
 package de.hanoi;
 
 import java.awt.Color;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Random;
@@ -14,13 +15,15 @@ public class HanoiPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private GamePad gamepad = new GamePad();
+	private GamePad gamepad;
 	private Peg stack = new Peg();
 	private Random random = new Random();
 	
 	public HanoiPanel(GamePad g)
 	{
 		gamepad = g;
+
+		new Thread(new AutoSolver(gamepad, 1)).start();
 	}
 	
 	public void paint(Graphics d)
@@ -30,6 +33,8 @@ public class HanoiPanel extends JPanel {
 		int width = getWidth();
 		int height = getHeight();
 		Graphics2D g = (Graphics2D) d;
+		
+		
 		
 		for (int i = 0; i < 3; i++) {
 			stack.push(new Disk(1+1));
@@ -45,6 +50,7 @@ public class HanoiPanel extends JPanel {
 		g.fillRect(width/4, 10, stack_width, stack_height);
 		g.fillRect(width/2, 10, stack_width, stack_height);
 		g.fillRect((width/4)*3, 10, stack_width, stack_height);
+		g.setColor(Color.GREEN);
 		/*
 		if(!stack.isEmpty())
 		{
@@ -59,12 +65,11 @@ public class HanoiPanel extends JPanel {
 		}*/
 		for(int i = 0; i < 3; i++)
 		{
-			//System.out.println("#"+i);
 			Peg p = gamepad.getPegAt(i);
 			for(int a = 0; a < p.size(); a++)
 			{
 				int no = p.getDiskAt(a).SIZE;
-				g.fillRect((width/4)*(i+1),10+no*10,no*10,15);
+				g.fillRect((width/4)*(i+1)-4*no,height/5*4-10-a*10,no*8+stack_width,10);
 			}
 		}
 	}

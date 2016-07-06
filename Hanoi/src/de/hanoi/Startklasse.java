@@ -16,7 +16,7 @@ public class Startklasse {
 	
 	public static void main(String[] args) {
 		JFrame gui = new JFrame("Hanoi");
-		HanoiPanel face = new HanoiPanel(new GamePad());
+		HanoiPanel face = new HanoiPanel(new GamePad(5));
 		PlayPanel actionfield = new PlayPanel();
 		JPanel groundPanel = new JPanel();
 		
@@ -34,6 +34,14 @@ public class Startklasse {
 		gui.add(groundPanel);
 
 		gui.setVisible(true);
+		
+		new Thread(new Runnable(){
+			public void run()
+			{
+				while(true)
+					gui.repaint();
+			}
+		}).start();
 	}
 
 }
