@@ -15,9 +15,10 @@ public class Startklasse {
 	
 	
 	public static void main(String[] args) {
+		GamePad g = new GamePad(5);
 		JFrame gui = new JFrame("Hanoi");
-		HanoiPanel face = new HanoiPanel(new GamePad(5));
-		PlayPanel actionfield = new PlayPanel();
+		HanoiPanel face = new HanoiPanel(g);
+		PlayPanel actionfield = new PlayPanel(g);
 		JPanel groundPanel = new JPanel();
 		
 		groundPanel.setLayout(new BorderLayout());
@@ -28,8 +29,6 @@ public class Startklasse {
 		
 		groundPanel.add(face, BorderLayout.CENTER);
 		groundPanel.add(actionfield, BorderLayout.PAGE_END);
-		
-		actionfield.init();
 		
 		gui.add(groundPanel);
 

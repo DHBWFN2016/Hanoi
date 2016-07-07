@@ -12,14 +12,21 @@ import java.util.Stack;
 public class Peg
 {
 	/**
-	 *  
+	 *  The Stack this class wraps around. Here all the disks are saved.
 	 */
 	private Stack<Disk> stack;
 
+	/**
+	 * Initializes a new empty Peg.
+	 */
 	public Peg()
 	{
 		stack = new Stack<Disk>();
 	}
+	/**
+	 * Initializes a new Peg with all the disks from the given Stack. This is only used internally for the getCopy() method.
+	 * @param s the Stack with all the Disks this new one should contain
+	 */
 	private Peg(Stack<Disk> s)
 	{
 		stack = new Stack<Disk>();
