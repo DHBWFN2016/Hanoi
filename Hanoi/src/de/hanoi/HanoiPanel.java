@@ -22,8 +22,6 @@ public class HanoiPanel extends JPanel {
 	public HanoiPanel(GamePad g)
 	{
 		gamepad = g;
-
-		//new Thread(new AutoSolver(gamepad, 1)).start();
 	}
 	
 	public void paint(Graphics d)

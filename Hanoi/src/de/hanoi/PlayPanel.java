@@ -20,6 +20,8 @@ public class PlayPanel extends JPanel implements ActionListener {
 	
 	private JButton commit = new JButton("Commit!");
 	private JButton resetb = new JButton("Reset");
+	private JButton autosolve = new JButton("Solve automatically");
+	private JButton cancel = new JButton("Cancel solving");
 	private JLabel lbl_moves = new JLabel("Number of moves: ");
 	private JLabel lbl_number = new JLabel("0");
 	private JComboBox<Integer> box1 = new JComboBox<Integer>();
@@ -46,6 +48,18 @@ public class PlayPanel extends JPanel implements ActionListener {
 			}
 		});
 		
+		autosolve.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				gamepad.autoSolve();
+			}
+		});
+		
+		cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent a) {
+				gamepad.cancelSolving();
+			}
+		});
+		
 		lbl_moves.setLocation(0, 0);
 		
 		lbl_number.setSize(25, 18);
@@ -60,6 +74,8 @@ public class PlayPanel extends JPanel implements ActionListener {
 		add(lbl_number);
 		add(box1);
 		add(box2);
+		add(autosolve);
+		add(cancel);
 		add(commit);
 		add(resetb);
 	}
@@ -70,7 +86,8 @@ public class PlayPanel extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		try {
-			gamepad.move(((Integer) box1.getSelectedItem())-1, ((Integer)(box2.getSelectedItem()))-1);
+			if(gamepad.move(((Integer) box1.getSelectedItem())-1, ((Integer)(box2.getSelectedItem()))-1))
+				System.out.println("You won with " + gamepad.getMoves() + " moves!");
 		} catch (IllegalMovementException e1) {
 			e1.printStackTrace();
 		}

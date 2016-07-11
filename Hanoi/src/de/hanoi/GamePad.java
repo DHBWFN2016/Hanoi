@@ -8,10 +8,11 @@ package de.hanoi;
 public class GamePad
 {
 	private Peg[] pegs;
-	public int diskNumber;
+	private int diskNumber;
 	public static final int DEFAULT_DISK_NUMBER = 4;
 	private int moves;
 	private GameState currentGameState;
+	private AutoSolver autoSolver;
 	
 	/**
 	 * Initializes a GamePad with a default number of 4 Disks.
@@ -47,6 +48,7 @@ public class GamePad
 			pegs[0].push(new Disk(i));
 		}
 		moves = 0;
+		autoSolver = new AutoSolver(this);
 	}
 	 /**
 	  * Moves the top Disk from the first Peg onto the other. This is the only possibility to change the state of pegs and disks. The GUI as well as the
@@ -54,8 +56,9 @@ public class GamePad
 	  * @param peg1 the Peg from where the Disk is taken from
 	  * @param peg2 the PEg where the Disk is put
 	  * @throws  IllegalMovementException when an illegal movement is performed
+	  * @return a boolean telling whether the game is over (true) or not (false)
 	  */
-	public void move(int peg1, int peg2) throws IllegalMovementException
+	public boolean move(int peg1, int peg2) throws IllegalMovementException
 	{
 		moves++;
 		if(pegs[peg1].isEmpty())
@@ -67,6 +70,9 @@ public class GamePad
 			throw new IllegalMovementException("Trying to move size " + pegs[peg1].peek() + " onto size " + pegs[peg2].peek());
 		}
 		pegs[peg2].push(pegs[peg1].pop());
+		if(pegs[2].size() == diskNumber)
+			return true;
+		return false;
 	}
 
 	/**
@@ -124,9 +130,24 @@ public class GamePad
 		return currentGameState;
 	}
 	
+	/**
+	 * Returns a copy of the Peg  at the index given.
+	 * @param index the index of the peg to be returned
+	 * @return a copy of the peg
+	 */
 	public Peg getPegAt(int index)
 	{
 		return pegs[index].getCopy();
+	}
+	
+	public void autoSolve()
+	{
+		AutoSolver.presetDelay(1);
+		new Thread(autoSolver).start();
+	}
+	public void cancelSolving()
+	{
+		autoSolver.cancel();
 	}
 
 	/**

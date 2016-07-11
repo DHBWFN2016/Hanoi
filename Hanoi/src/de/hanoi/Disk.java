@@ -7,9 +7,6 @@ package de.hanoi;
  */
 public class Disk implements Comparable<Disk>
 {
-	/**
-	 * An int representing the disk size 
-	 */
 	public final int SIZE;
 	
 	/**

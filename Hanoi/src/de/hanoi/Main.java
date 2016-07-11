@@ -15,9 +15,10 @@ public class Main {
 	public static void main(String[] args) throws Exception
 	{
 		GamePad gamePad = parseArgs(args);
+		GUIStarter.start(gamePad);
 		if(gamePad.getGameState() == GameState.AUTOPLAY)
 		{
-			new AutoSolver(gamePad).solve();
+			gamePad.autoSolve();
 		}
 	}
 	
@@ -85,7 +86,7 @@ public class Main {
 	private static void printError()
 	{
 		System.err.println("An error occured while parsing.");
-		System.err.println("Type \"java Main -help\" for the Help Page.");
+		System.err.println("Type \"java de.hanoi.Main -help\" for the Help Page.");
 		System.exit(1);
 	}
 	

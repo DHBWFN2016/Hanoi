@@ -8,9 +8,13 @@ package de.hanoi;
  */
 public class AutoSolver implements Runnable
 {
-	private GamePad gamePad;
+	/**
+	 * The value for a preset delay. This value is set before any instance of this class exists, which is why this field is static.
+	 */
 	private static int preDelay;
 	private int delay;
+	private GamePad gamePad;
+	private boolean abort;
 	
 	/**
 	 * Initializes a new AutoSolver for the given {@link GamePad} and with either the default delay or the preset one.
@@ -18,8 +22,9 @@ public class AutoSolver implements Runnable
 	 */
 	public AutoSolver(GamePad gamePad)
 	{
+		delay = (preDelay == 0) ? 1 : preDelay;
+		abort = false;
 		this.gamePad = gamePad;
-		delay = (preDelay == 0) ? 0 : preDelay;
 	}
 	
 	/**
@@ -29,8 +34,9 @@ public class AutoSolver implements Runnable
 	 */
 	public AutoSolver(GamePad gamePad, int delay)
 	{
-		this.gamePad = gamePad;
 		this.delay = delay;
+		abort = false;
+		this.gamePad = gamePad;
 	}
 	
 	/**
@@ -55,9 +61,13 @@ public class AutoSolver implements Runnable
 	 */
 	private void solve(int start, int help, int target, int size) throws IllegalMovementException
 	{
+		if(abort)
+		{
+			abort = false;
+			return;
+		}
 		if(size == 1)
 		{
-			gamePad.move(start, target);
 			try
 			{
 				Thread.sleep(delay*1000L);
@@ -67,11 +77,12 @@ public class AutoSolver implements Runnable
 				// if this happens we have bigger problems than a dormant Thread...
 				e.printStackTrace();
 			}
+			gamePad.move(start, target);
+			System.out.println("moving "+start+" -> "+target);
 		}
 		else
 		{
 			solve(start, target, help, size-1);
-			gamePad.move(start, target);
 			try
 			{
 				Thread.sleep(delay*1000L);
@@ -81,6 +92,8 @@ public class AutoSolver implements Runnable
 				// if this happens we have bigger problems than a dormant Thread...
 				e.printStackTrace();
 			}
+			gamePad.move(start, target);
+			System.out.println("moving "+start+" -> "+target);
 			solve(help, start, target, size-1);
 		}
 	}
@@ -96,10 +109,18 @@ public class AutoSolver implements Runnable
 		}
 		catch (IllegalMovementException e)
 		{
-			// if this happens we screwed up the algorithm
-			// of course this will never happen
+			// If this happens, we screwed up the algorithm.
+			// Of course it won't. 
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Cancels a running solving process.
+	 */
+	public void cancel()
+	{
+		abort = true;
 	}
 	
 	/**

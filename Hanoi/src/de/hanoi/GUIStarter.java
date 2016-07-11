@@ -7,15 +7,14 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Startklasse {
+public class GUIStarter {
 
 	public static final Dimension DIMENSION_SCREEN = Toolkit.getDefaultToolkit().getScreenSize();
 	public static final int GUI_HEIGHT = DIMENSION_SCREEN.height/2;
 	public static final int GUI_WIDTH = DIMENSION_SCREEN.width/2;
 	
 	
-	public static void main(String[] args) {
-		GamePad g = new GamePad(5);
+	public static void start(GamePad g) {
 		JFrame gui = new JFrame("Hanoi");
 		HanoiPanel face = new HanoiPanel(g);
 		PlayPanel actionfield = new PlayPanel(g);

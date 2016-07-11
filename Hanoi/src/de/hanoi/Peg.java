@@ -12,7 +12,7 @@ import java.util.Stack;
 public class Peg
 {
 	/**
-	 *  The Stack this class wraps around. Here all the disks are saved.
+	 *  The Stack this class wraps around. Here is where all the disks are saved.
 	 */
 	private Stack<Disk> stack;
 
@@ -79,11 +79,21 @@ public class Peg
 		return stack.size();
 	}
 	
-	public Disk getDiskAt(int i)
+	/**
+	 * Wraps around the Vector method elementAt
+	 * @param index the position from which the Disk will be taken
+	 * @return the Disk at the given index
+	 */
+	public Disk getDiskAt(int index)
 	{
-		return stack.elementAt(i);
+		return stack.elementAt(index);
 	}
 	
+	/**
+	 * Returns a copy of this Peg. This method is used for security reasons as it would be unsafe to make the
+	 * actual Peg public. The returned copy can be manipulated at will, as the original one will not be affected.
+	 * @return a copy of this Peg
+	 */
 	public Peg getCopy()
 	{
 		return new Peg(stack);
