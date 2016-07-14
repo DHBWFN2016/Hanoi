@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 /**
  * The class GUIStarter launch the Graphical User Interface that is divided in two fractions.
  * These fractions are the {@link HanoiPanel} and the {@link PlayPanel}
- * @author phillip.goellner and severino.detta
+ * @author severino.detta
  *
  */
 public class GUIStarter {

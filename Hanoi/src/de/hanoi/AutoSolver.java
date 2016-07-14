@@ -63,7 +63,6 @@ public class AutoSolver implements Runnable
 	{
 		if(abort)
 		{
-			abort = false;
 			return;
 		}
 		if(size == 1)
@@ -78,7 +77,6 @@ public class AutoSolver implements Runnable
 				e.printStackTrace();
 			}
 			gamePad.move(start, target);
-			System.out.println("moving "+start+" -> "+target);
 		}
 		else
 		{
@@ -92,8 +90,15 @@ public class AutoSolver implements Runnable
 				// if this happens we have bigger problems than a dormant Thread...
 				e.printStackTrace();
 			}
+			if(abort)
+			{
+				return;
+			}
 			gamePad.move(start, target);
-			System.out.println("moving "+start+" -> "+target);
+			if(abort)
+			{
+				return;
+			}
 			solve(help, start, target, size-1);
 		}
 	}

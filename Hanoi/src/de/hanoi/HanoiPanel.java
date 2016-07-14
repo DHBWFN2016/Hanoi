@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 /**
  * HanoiPanel signify the drawing Game, where {@link Disk}s moves from one {@link Peg} to another within the {@link GamePad}
  * and it is a fragment of the GUI.
- * @author phillip.goellner & severino.detta
+ * @author severino.detta
  *
  */
 public class HanoiPanel extends JPanel {

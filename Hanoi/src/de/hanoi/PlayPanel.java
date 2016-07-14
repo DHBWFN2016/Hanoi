@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 /**
  * PlayPanel is where the User have to play. It creates a control area with Buttons etc.
  * and it is a fragment of the GUI.
- * @author phillip.goellner & severino.detta
+ * @author severino.detta
  *
  */
 public class PlayPanel extends JPanel implements ActionListener {
