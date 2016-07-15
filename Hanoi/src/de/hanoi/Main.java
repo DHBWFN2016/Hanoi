@@ -15,10 +15,14 @@ public class Main {
 	public static void main(String[] args) throws Exception
 	{
 		GamePad gamePad = parseArgs(args);
-		GUIStarter.start(gamePad);
 		if(gamePad.getGameState() == GameState.AUTOPLAY)
 		{
+			GUIStarter.start(gamePad, true);
 			gamePad.autoSolve();
+		}
+		else
+		{
+			GUIStarter.start(gamePad, false);
 		}
 	}
 	
@@ -55,6 +59,7 @@ public class Main {
 					try
 					{
 						AutoSolver.presetDelay(Integer.parseInt(args[i]));
+						gamePad.resetMoves();
 					}
 					catch(ArrayIndexOutOfBoundsException a)
 					{
@@ -65,7 +70,6 @@ public class Main {
 				{
 					try
 					{
-						System.out.println("Disk number -> " + args[i]);
 						gamePad.setDiskNumber(Integer.parseInt(args[i]));
 					}
 					catch(NumberFormatException n)

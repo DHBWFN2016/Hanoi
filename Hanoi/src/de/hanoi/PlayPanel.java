@@ -27,8 +27,7 @@ public class PlayPanel extends JPanel implements ActionListener {
 	
 	private JButton commit = new JButton("Commit!");
 	private JButton resetb = new JButton("Reset");
-	private JButton autosolve = new JButton("Solve automatically");
-	private JButton cancel = new JButton("Cancel solving");
+	private JButton autosolve = new JButton("Solve");
 	private JLabel lbl_moves = new JLabel("Number of moves: ");
 	private JLabel lbl_number = new JLabel("0");
 	private JLabel lbl_from = new JLabel("From: ");
@@ -43,16 +42,21 @@ public class PlayPanel extends JPanel implements ActionListener {
 	 * Initializes a PlayPanel with a given GamePad
 	 * @param g The GamePad that should be initialized
 	 */
-	public PlayPanel(GamePad g)
+	public PlayPanel(GamePad g, boolean autoplay)
 	{
 		gamepad = g;
-		init();
+		if (autoplay) {
+			initAutoplay();
+		}
+		else {
+			initInteractive();
+		}
 	}
 	
 	/**
 	 * Initializes the action instruments and their function
 	 */
-	public void init()
+	public void initInteractive()
 	{
 		this.setLayout(flow);
 		commit.addActionListener(this);
@@ -63,24 +67,6 @@ public class PlayPanel extends JPanel implements ActionListener {
 			 */
 			public void actionPerformed(ActionEvent a) {
 				gamepad.resetMoves();
-			}
-		});
-		
-		autosolve.addActionListener(new ActionListener() {
-			/**
-			 * Define the action of the button "Solve automatically"
-			 */
-			public void actionPerformed(ActionEvent a) {
-				gamepad.autoSolve();
-			}
-		});
-		
-		cancel.addActionListener(new ActionListener() {
-			/**
-			 * Define the action of the button "Cancel solving"
-			 */
-			public void actionPerformed(ActionEvent a) {
-				gamepad.cancelSolving();
 			}
 		});
 		
@@ -98,8 +84,47 @@ public class PlayPanel extends JPanel implements ActionListener {
 		add(lbl_to);
 		add(box2);
 		add(commit);
+		add(resetb);
+	}
+	
+	/**
+	 * Initializes the action instruments and their function
+	 */
+	public void initAutoplay()
+	{
+		this.setLayout(flow);
+		commit.addActionListener(this);
+		
+		resetb.addActionListener(new ActionListener() {
+			/**
+			 * Define the action of the button "Reset"
+			 */
+			public void actionPerformed(ActionEvent a) {
+				resetb.setEnabled(false);
+				autosolve.setEnabled(true);
+				gamepad.cancelSolving();
+				gamepad.resetMoves();
+				
+			}
+		});
+		
+		autosolve.addActionListener(new ActionListener() {
+			/**
+			 * Define the action of the button "Solve"
+			 */
+			public void actionPerformed(ActionEvent a) {
+				resetb.setEnabled(true);
+				autosolve.setEnabled(false);
+				gamepad.autoSolve();
+			}
+		});
+		
+		lbl_number.setEnabled(false);
+		autosolve.setEnabled(false);
+		
+		add(lbl_moves);
+		add(lbl_number);
 		add(autosolve);
-		add(cancel);
 		add(resetb);
 	}
 	
@@ -119,7 +144,6 @@ public class PlayPanel extends JPanel implements ActionListener {
 				System.out.println("You won with " + gamepad.getMoves() + " moves!");
 				wrong.setVisible(false);
 		} catch (IllegalMovementException e1) {
-			e1.printStackTrace();
 			wrong.setText(e1.getMessage());
 			wrong.setVisible(true);
 			wrong.setForeground(Color.RED);

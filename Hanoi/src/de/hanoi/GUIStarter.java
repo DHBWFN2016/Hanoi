@@ -26,11 +26,11 @@ public class GUIStarter {
 	 * Draw a GUI with its components, that are influenced by a GamePad 
 	 * @param g the required GamePad for the initialization of the current GUI  
 	 */
-	public static void start(GamePad g) {
+	public static void start(GamePad g, boolean autoplay) {
 		
 		JFrame gui = new JFrame("Hanoi");
 		HanoiPanel face = new HanoiPanel(g);
-		PlayPanel actionfield = new PlayPanel(g);
+		PlayPanel actionfield = new PlayPanel(g, autoplay);
 		JPanel groundPanel = new JPanel();
 		
 		groundPanel.setLayout(new BorderLayout());

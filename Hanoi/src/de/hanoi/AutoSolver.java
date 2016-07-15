@@ -28,18 +28,6 @@ public class AutoSolver implements Runnable
 	}
 	
 	/**
-	 * Initializes a new AutoSolver for the given {@link GamePad} and the given delay.
-	 * @param gamePad the GamePad for which this solver is meant
-	 * @param delay the desired delay
-	 */
-	public AutoSolver(GamePad gamePad, int delay)
-	{
-		this.delay = delay;
-		abort = false;
-		this.gamePad = gamePad;
-	}
-	
-	/**
 	 * This function is the one used by the visualizing parts of the program.
 	 * It simply calls the real (private) solve function with the right parameters. 
 	 * @throws IllegalMovementException
@@ -75,6 +63,10 @@ public class AutoSolver implements Runnable
 			{
 				// if this happens we have bigger problems than a dormant Thread...
 				e.printStackTrace();
+			}
+			if(abort)
+			{
+				return;
 			}
 			gamePad.move(start, target);
 		}

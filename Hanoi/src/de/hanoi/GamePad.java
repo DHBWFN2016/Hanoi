@@ -142,7 +142,6 @@ public class GamePad
 	
 	public void autoSolve()
 	{
-		AutoSolver.presetDelay(1);
 		new Thread(autoSolver).start();
 	}
 	public void cancelSolving()
