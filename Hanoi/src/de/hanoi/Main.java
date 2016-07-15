@@ -34,8 +34,7 @@ public class Main {
 		GamePad gamePad = new GamePad();
 		if(args.length == 0)
 		{
-			System.err.println("No Arguments were given where one was expected. Please refer to the Help Page below.\n");
-			printHelp();
+			return gamePad;
 		}
 		else
 		{
