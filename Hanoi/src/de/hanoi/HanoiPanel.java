@@ -15,10 +15,13 @@ import javax.swing.JPanel;
 public class HanoiPanel extends JPanel {
 
 	/**
-	 * 
+	 * The default serialVersionUID, demanded due to the extension Exception.
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * {@link GamePad} that is used in several methods
+	 */
 	private GamePad gamepad;
 	
 	/**

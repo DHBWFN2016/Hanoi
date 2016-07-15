@@ -15,15 +15,19 @@ import javax.swing.JPanel;
  */
 public class GUIStarter {
 
-	public static final Dimension DIMENSION_SCREEN = Toolkit.getDefaultToolkit().getScreenSize();
-	public static final int GUI_HEIGHT = DIMENSION_SCREEN.height/2;
-	public static final int GUI_WIDTH = DIMENSION_SCREEN.width/2;
+	/**
+	 * Define the GUI size
+	 */
+	private static final Dimension DIMENSION_SCREEN = Toolkit.getDefaultToolkit().getScreenSize();
+	private static final int GUI_HEIGHT = DIMENSION_SCREEN.height/2;
+	private static final int GUI_WIDTH = DIMENSION_SCREEN.width/2;
 	
 	/**
 	 * Draw a GUI with its components, that are influenced by a GamePad 
 	 * @param g the required GamePad for the initialization of the current GUI  
 	 */
 	public static void start(GamePad g) {
+		
 		JFrame gui = new JFrame("Hanoi");
 		HanoiPanel face = new HanoiPanel(g);
 		PlayPanel actionfield = new PlayPanel(g);
